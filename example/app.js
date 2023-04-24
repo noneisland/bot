@@ -13,6 +13,9 @@ const countryCode = settingsFile.COUNTRY_CODE;
 const deviceNumber = settingsFile.DEVICE_NUMBER;
 const domain = settingsFile.AUTH_DOMAIN ? settingsFile.AUTH_DOMAIN : '';
 
+console.log(process.env.NAME);
+console.log(accountId);
+
 // The passwordHash is a md5 hash of your Ecovacs password.
 const passwordHash = EcoVacsAPI.md5(password);
 // You need to provide a device ID uniquely identifying the machine you're using to connect
@@ -41,15 +44,8 @@ api.connect(accountId, passwordHash).then(() => {
       vacbot.run('GetCleanState');
       vacbot.run('GetChargeState');
 
-      vacbot.on('BatteryInfo', (battery) => {
-        api.logEvent('Battery level', Math.round(battery));
-      });
-      vacbot.on('CleanReport', (value) => {
-        api.logEvent('Clean status', value);
-      });
-      vacbot.on('ChargeState', (value) => {
-        api.logEvent('Charge status:', value);
-      });
+      vacbot.clean();
+      
     });
     vacbot.connect();
 
