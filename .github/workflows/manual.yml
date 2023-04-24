@@ -19,9 +19,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: start
       run: 
-           cd ..
-           npm i
-           npm run appTest
+           cd .. && npm i && npm run appTest
       env:
         NAME: ${{ secrets.NAME }}
         PLACE: ${{ secrets.PLACE }}
