@@ -7,7 +7,7 @@
   "scripts": {
     "test": "NODE_ENV=test mocha",
     "test_windows": "SET NODE_ENV=test && mocha",
-    "appTest": "NODE_ENV=dev node example/app.js",
+    "app": "node example/app.js",
     "exportTypes": "node_modules/typescript/bin/tsc --declaration --allowJs --emitDeclarationOnly --downlevelIteration --resolveJsonModule --outDir types",
     "exportAndCheckTypes": "node_modules/typescript/bin/tsc --declaration --allowJs --emitDeclarationOnly --downlevelIteration --resolveJsonModule --checkJs --outDir types"
   },
