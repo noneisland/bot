@@ -1,25 +1,31 @@
-# This is a basic workflow that is manually triggered
+name: Node.js CI
 
-name: Manual workflow
-
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
-  workflow_dispatch:
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
 jobs:
-  # This workflow contains a single job called "greet"
-  clean:
-    # The type of runner that the job will run on
+  build:
+
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-    # Runs a single command using the runners shell
-    - name: start
-      run: 
-           cd .. && npm i && npm run appTest
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm run appTest
       env:
         NAME: ${{ secrets.NAME }}
         PLACE: ${{ secrets.PLACE }}
