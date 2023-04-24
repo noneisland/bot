@@ -163,6 +163,9 @@ class EcovacsMQTT_JSON extends EcovacsMQTT {
             }
             case 'Evt': {
                 // TODO: Find out the value of the 'Evt' message
+                
+                console.log(command, payload);
+                this.emit('ErrorCode', payload.code);
                 this.vacBot.handleEvt(payload);
                 break;
             }
