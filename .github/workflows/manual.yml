@@ -7,8 +7,6 @@ name: Manual workflow
 on:
   workflow_dispatch:
 
-
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
@@ -25,8 +23,7 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
-    - run: npm run appTest
+    - run: npm run app
       env:
         NAME: ${{ secrets.NAME }}
         PLACE: ${{ secrets.PLACE }}
