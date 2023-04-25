@@ -26,7 +26,6 @@ const api = new EcoVacsAPI(deviceId, countryCode, '', domain);
 api.connect(accountId, passwordHash).then(() => {
 
   api.devices().then((devices) => {
-    api.logInfo(`Devices: ${JSON.stringify(devices)}`);
 
     let vacuum = devices[deviceNumber];
     let vacbot = api.getVacBot(api.uid, EcoVacsAPI.REALM, api.resource, api.user_access_token, vacuum, api.getContinent());
@@ -35,11 +34,14 @@ api.connect(accountId, passwordHash).then(() => {
     // At this point you can request information from your vacuum or send actions to it.
     vacbot.on('ready', () => {
 
-      api.logInfo('vacbot ready');
-      
+      api.logEvent(`${(new Date()).toLocaleTimeString()} Ready`);
       vacbot.on('ErrorCode', (code) => {
         api.logEvent(`${(new Date()).toLocaleTimeString()} ErrorCode`, code);
         if (code == "128" || code == "1026") setTimeout(() => {vacbot.resume();}, 5000);
+        if (code == "1021") {
+          api.logEvent(`${(new Date()).toLocaleTimeString()} Cleaning complete`);
+          disconnect();
+        }
       });
       
       vacbot.clean();
