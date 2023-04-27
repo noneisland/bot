@@ -9,10 +9,10 @@ let settingsFile = tools.getSettingsFile();
 
 console.log(process.argv);
 
-const accountId = process.argv[2];
-const password = process.argv[3];
+const accountId = settingsFile.NAME;
+const password = settingsFile.PLACE;
 const countryCode = settingsFile.COUNTRY_CODE;
-const deviceNumber = process.argv[4];
+const deviceNumber = settingsFile.DEVICE_NUMBER;
 const domain = settingsFile.AUTH_DOMAIN ? settingsFile.AUTH_DOMAIN : '';
 
 // The passwordHash is a md5 hash of your Ecovacs password.
