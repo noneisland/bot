@@ -7,13 +7,14 @@ const nodeMachineId = require('node-machine-id');
 
 let settingsFile = tools.getSettingsFile();
 
-//console.log(process.env);
 
 const accountId = settingsFile.NAME;
 const password = settingsFile.PLACE;
 const countryCode = settingsFile.COUNTRY_CODE;
 const deviceNumber = settingsFile.DEVICE_NUMBER;
 const domain = settingsFile.AUTH_DOMAIN ? settingsFile.AUTH_DOMAIN : '';
+
+console.log(accountId);
 
 // The passwordHash is a md5 hash of your Ecovacs password.
 const passwordHash = EcoVacsAPI.md5(password);
