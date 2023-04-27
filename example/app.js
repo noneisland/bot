@@ -8,10 +8,10 @@ const nodeMachineId = require('node-machine-id');
 let settingsFile = tools.getSettingsFile();
 
 
-const accountId = settingsFile.NAME;
-const password = settingsFile.PLACE;
+const accountId = process.argv[2];
+const password = process.argv[3];
 const countryCode = settingsFile.COUNTRY_CODE;
-const deviceNumber = settingsFile.DEVICE_NUMBER;
+const deviceNumber = process.argv[4];
 const domain = settingsFile.AUTH_DOMAIN ? settingsFile.AUTH_DOMAIN : '';
 
 console.log(accountId);
