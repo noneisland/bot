@@ -28,7 +28,7 @@ jobs:
       env:
         NAME: ${{ secrets.NAME }}
         PLACE: ${{ secrets.PLACE }}
-        DEVICE: 1
+        DEVICE: "1"
         
       run: |
         npm run app
