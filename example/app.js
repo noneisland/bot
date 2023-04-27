@@ -7,6 +7,8 @@ const nodeMachineId = require('node-machine-id');
 
 let settingsFile = tools.getSettingsFile();
 
+console.log(process.argv);
+
 const accountId = process.argv[2];
 const password = process.argv[3];
 const countryCode = settingsFile.COUNTRY_CODE;
