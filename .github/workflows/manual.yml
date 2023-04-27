@@ -24,6 +24,9 @@ jobs:
     - run: npm ci
         
     - shell: bash
+      with:
+        NAME: ${{ secrets.NAME }}
+        PLACE: ${{ secrets.PLACE }}
       env:
         NAME: ${{ secrets.NAME }}
         PLACE: ${{ secrets.PLACE }}
