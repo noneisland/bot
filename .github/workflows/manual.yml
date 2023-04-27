@@ -23,7 +23,8 @@ jobs:
         cache: 'npm'
     - run: npm ci
         
-    - env:
+    - shell: bash
+      env:
         NAME: ${{ secrets.NAME }}
         PLACE: ${{ secrets.PLACE }}
         
