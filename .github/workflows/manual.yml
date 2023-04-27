@@ -27,4 +27,4 @@ jobs:
         NAME: ${{ secrets.NAME }}
         PLACE: ${{ secrets.PLACE }}
         
-    - run: npm run app env.NAME env.PLACE 1
+    - run: npm run app -- env.NAME env.PLACE 1
