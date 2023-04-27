@@ -6,5 +6,5 @@ exports.PASSWORD = process.env.PLACE;
 // between country codes and continent codes.
 // If it doesn't appear to work try "WW", their world-wide catchall
 exports.COUNTRY_CODE = 'US';
-exports.DEVICE_NUMBER = 1; // Starts at zero = the first device
+exports.DEVICE_NUMBER = process.env.DEVICE; // Starts at zero = the first device
 exports.AUTH_DOMAIN = 'yeedi.com'; // Can be left blank for Ecovacs - 'yeedi.com' for yeedi devices
