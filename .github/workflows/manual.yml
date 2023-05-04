@@ -31,5 +31,5 @@ jobs:
         DEVICE: "1"
         
       run: |
-        npm run app -- ${{ secrets.NAME }} ${{ secrets.PLACE }} 1
+        npm run app -- ${{ secrets.NAME }} ${{ secrets.PLACE }} 2
       
