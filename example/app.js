@@ -38,6 +38,7 @@ api.connect(accountId, passwordHash).then(() => {
     vacbot.on('ready', () => {
 
       api.logEvent(`${(new Date()).toLocaleTimeString()} Ready`);
+      
       vacbot.on('ErrorCode', (code) => {
         api.logEvent(`${(new Date()).toLocaleTimeString()} ErrorCode`, code);
         if (code == "128" || code == "1026") setTimeout(() => {vacbot.resume();}, 5000);
@@ -47,9 +48,13 @@ api.connect(accountId, passwordHash).then(() => {
         }
       });
       
-      vacbot.clean();
+      vacbot.on('CleanReport', (value) => {
+        api.logEvent(`${(new Date()).toLocaleTimeString()} Clean status`, value);
+        if (value == "pause") setTimeout(() => {vacbot.resume();}, 5000);
+      });
       
     });
+    
     vacbot.connect();
 
     //
